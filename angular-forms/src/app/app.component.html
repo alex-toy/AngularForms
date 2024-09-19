@@ -1,4 +1,7 @@
-<div class="container-fluid">
+<app-user-form></app-user-form>
+
+
+<div class="container-fluid" *ngIf="false">
   <h1>Angular Template Driven Form</h1>
 
   {{ userModel | json }}
@@ -8,7 +11,16 @@
 
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" [(ngModel)]="userModel.Name" name="Name">
+      <input type="text" class="form-control" 
+        name="Name" #userName="ngModel" required 
+        [(ngModel)]="userModel.Name" 
+        [class.is-invalid]="userName.invalid && !userName.pristine"
+      >
+      <small class="text-danger" 
+        [class.d-none]="userName.valid || userName.untouched" 
+      >
+        Name is required
+      </small>
     </div>
     
     <div class="form-group">
@@ -17,8 +29,17 @@
     </div>
     
     <div class="form-group">
-      <label>Phone</label>
-      <input type="tel" class="form-control" [(ngModel)]="userModel.Phone" name="Phone">
+      <label for="phone">Phone</label>
+      <input type="tel" class="form-control"
+        [(ngModel)]="userModel.Phone"
+        name="phone" #phone="ngModel" pattern="^\d{10}$" required
+        [class.is-invalid]="phone.invalid && phone.touched"
+      >
+      <small class="text-danger" 
+        [class.d-none]="phone.valid || phone.untouched"
+      >
+        Invalid Phone Number
+      </small>
     </div>
     
     <div class="form-group">
@@ -69,7 +90,7 @@
 
     </div>
 
-    <button class="btn btn-primary" type="submit">Submit Form</button>
+    <button class="btn btn-primary" type="submit" (click)="createUser()">Submit Form</button>
 
   </form>
 </div>

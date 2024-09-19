@@ -12,6 +12,6 @@ export class User {
     ) {}
 
     public static CreateEmptyUser(){
-        return new User('alex', 'rea', 'dnfdrg', 'sdfsg', 'sddgs', false, Address.CreateEmptyAddress())
+        return new User('', 'rea', 'dnfdrg', 'sdfsg', 'sddgs', false, Address.CreateEmptyAddress())
     }
 }
