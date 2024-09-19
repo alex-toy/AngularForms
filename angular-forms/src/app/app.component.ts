@@ -2,6 +2,7 @@ import { NgFor, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { User } from './Models/user';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   topics = ['Angular', 'React', 'Vue'];
+  userModel : User = User.CreateEmptyUser()
 }

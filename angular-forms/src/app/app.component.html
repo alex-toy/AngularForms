@@ -1,27 +1,28 @@
 <div class="container-fluid">
-  <h1>Angular Form</h1>
+  <h1>Angular Template Driven Form</h1>
 
+  {{ userModel | json }}
   {{ userForm.value | json }}
 
   <form #userForm="ngForm">
 
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" ngModel name="Name">
+      <input type="text" class="form-control" [(ngModel)]="userModel.Name" name="Name">
     </div>
     
     <div class="form-group">
       <label>Email</label>
-      <input type="email" class="form-control" ngModel name="Email">
+      <input type="email" class="form-control" [(ngModel)]="userModel.Email" name="Email">
     </div>
     
     <div class="form-group">
       <label>Phone</label>
-      <input type="tel" class="form-control" ngModel name="Phone">
+      <input type="tel" class="form-control" [(ngModel)]="userModel.Phone" name="Phone">
     </div>
     
     <div class="form-group">
-      <select class="custom-select" ngModel name="Topic">
+      <select class="custom-select" [(ngModel)]="userModel.Topic" name="Topic">
         <option selected>I am intersted in</option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
@@ -30,18 +31,42 @@
     <div class="mb-3">
       <label>Time Preference</label>
       <div class="form-check">
-        <input type="radio" value="morning" class="form-check-input" ngModel name="timePreference">
+        <input type="radio" value="morning" class="form-check-input" [(ngModel)]="userModel.TimePreference" name="TimePreference">
         <label class="form-check-label">Morning (9AM - 12PM)</label>
       </div>
       <div class="form-check">
-        <input type="radio" value="evening" class="form-check-input" ngModel name="timePreference">
+        <input type="radio" value="evening" class="form-check-input" [(ngModel)]="userModel.TimePreference" name="TimePreference">
         <label class="form-check-label">Evening (5PM - 8PM)</label>
       </div>
     </div>
 
     <div class="form-check mb-3">
-      <input type="checkbox" class="form-check-input" ngModel name="isSendPromotionalOffers">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="userModel.IsSendPromotionalOffers" name="IsSendPromotionalOffers">
       <label class="form-check-label">Send me promotional offers</label>
+    </div>
+
+    <div ngModelGroup="Address">
+    
+      <div class="form-group">
+        <label>Street</label>
+        <input type="text" class="form-control" [(ngModel)]="userModel.Address.Street" name="Street">
+      </div>
+    
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" class="form-control" [(ngModel)]="userModel.Address.City" name="City">
+      </div>
+    
+      <div class="form-group">
+        <label>State</label>
+        <input type="text" class="form-control" [(ngModel)]="userModel.Address.State" name="State">
+      </div>
+    
+      <div class="form-group">
+        <label>Postal Code</label>
+        <input type="text" class="form-control" [(ngModel)]="userModel.Address.PostalCode" name="PostalCode">
+      </div>
+
     </div>
 
     <button class="btn btn-primary" type="submit">Submit Form</button>

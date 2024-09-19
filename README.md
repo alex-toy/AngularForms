@@ -1,5 +1,9 @@
 # Angular Forms
 
+## Template Driven
+
+1. Html Template
+
 - import **FormsModule** in the component
 
 - optionally add a debug section anywhere in the *html*
@@ -24,7 +28,25 @@
 <input type="radio" value="secondValue" ngModel name="RadioField">
 <input type="radio" value="thirdValue" ngModel name="RadioField">
 
-<input type="checkbox"  ngModel name="CheckboxField">
+<input type="checkbox" ngModel name="CheckboxField">
+```
+
+- you can also use *ngModelGroup* inside the form for complex fields like addresses
+```
+<div ngModelGroup="Address">
 ```
 
 - all the values selected should appear in the debug section
+
+
+2. component.ts file
+
+- Create model classes that conform to the form
+
+- add a field in the component that have a type of those classes
+
+- for each field, add an ngModel
+```
+[(ngModel)]="userModel.Name"
+```
+
